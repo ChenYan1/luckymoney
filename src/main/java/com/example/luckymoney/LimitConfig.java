@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 /**
- * @author Chen Jinghua
+ * @author Chen
  * @date 2019/4/10 3:27
  */
 @Component

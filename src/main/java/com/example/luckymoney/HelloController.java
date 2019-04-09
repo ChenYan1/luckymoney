@@ -4,15 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Chen Jinghua
+ * @author Chen
  * @date 2019/4/10 3:27
  */
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
 
+    private final LimitConfig limitConfig;
+
     @Autowired
-    private LimitConfig limitConfig;
+    public HelloController(LimitConfig limitConfig) {
+        this.limitConfig = limitConfig;
+    }
 
     @GetMapping("/say1")
     public String say(){
