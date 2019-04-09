@@ -18,9 +18,42 @@ public class HelloController {
         this.limitConfig = limitConfig;
     }
 
-    @GetMapping("/say1")
+    /**
+     * 通过对注解传入数组来设置多路径访问
+     * @return
+     */
+    @GetMapping({"/say0","/say1"})
     public String say(){
+        return "说明：" + limitConfig.getDescription();
+    }
+
+    @GetMapping("/say3")
+    public String say1(){
 		return "说明：" + limitConfig.getDescription();
+    }
+
+    /**
+     * 获取参数
+     * 形式：localhost:8080/luckymoney/hello/say4/100
+     * @param id
+     * @return
+     */
+    @GetMapping("/say4/{id}")
+    public String say2(@PathVariable("id") Integer id){
+        return "id:" + id;
+    }
+
+    /**
+     * 获取参数
+     * 形式：localhost:8080/luckymoney/hello/say5?id=100
+     * 若id在地址中非必传参数，value 指定值，required 是否必传，defaultValue 默认值
+     *  @RequestParam(value = "id", required = false, defaultValue = "0")
+     * @param id
+     * @return
+     */
+    @GetMapping("/say5")
+    public String say3(@RequestParam("id") Integer id){
+        return "id:" + id;
     }
 
     @PostMapping("/say")
